@@ -25,4 +25,9 @@ return [
     'log_write'    => [],
     // 应用结束
     'app_end'      => [],
+    //测试钩子
+    'app_test' => [
+        'app\\index\\behavior\\AppTest',
+        'app\\index\\behavior\\Test'
+    ]
 ];

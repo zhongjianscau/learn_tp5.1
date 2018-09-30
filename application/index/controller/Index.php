@@ -1,6 +1,11 @@
 <?php
 namespace app\index\controller;
 
+use think\facade\Config;
+use think\facade\Env;
+use think\facade\Hook;
+use think\Request;
+
 class Index
 {
     public function index()
@@ -11,5 +16,34 @@ class Index
     public function hello($name = 'ThinkPHP5')
     {
         return 'hello,' . $name;
+    }
+
+    public function getEnv()
+    {
+        return Env::get('app_debug');
+    }
+
+    public function getConfig()
+    {
+        return Config::get('app.default_controller');
+    }
+
+    public function behavior()
+    {
+//        echo '行为注册';
+        //行为注册
+//        Hook::add('app_init', 'app\\index\\behavior\\Test');
+//        Hook::add('app_init', function () {
+//            echo 'Hello World';
+//        });
+//        Hook::exec('app\\index\\behavior\\Test');
+//        dump(Hook::get('app_test'));
+//        dump(Hook::listen('app_test'));
+    }
+
+    public function readNews(Request $request)
+    {
+        $id = $request->param('id');
+        echo '参数id为：' . $id;
     }
 }

@@ -13,7 +13,11 @@ Route::get('think', function () {
     return 'hello,ThinkPHP5!';
 });
 
-Route::get('hello/:name', 'index/hello');
+//Route::get('hello/:name', 'index/hello');
+
+Route::rule('hello/:name', 'index/hello')->middleware(app\http\middleware\Check::class);
+
+Route::rule('new/:id', 'index/Index/readNews');
 
 return [
 
